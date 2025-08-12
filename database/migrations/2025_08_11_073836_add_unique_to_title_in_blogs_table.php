@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('example1', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('blogs', function (Blueprint $table) {
+            $table->string('title')->unique()->change();
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('example1');
+        Schema::table('blogs', function (Blueprint $table) {
+            $table->dropIndex('blogs_title_unique');
+        });
     }
 };
