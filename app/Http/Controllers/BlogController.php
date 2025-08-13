@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $blogs = DB::table('blogs')->paginate(10);
-        return view('blog', ['blogs' => $blogs]);
+        $title = $request->title;
+        $blogs = DB::table('blogs')->where('title', 'LIKE', '%' . $title . '%')->paginate(10);
+
+        return view('blog', ['blogs' => $blogs, 'title' => $title]);
     }
 }

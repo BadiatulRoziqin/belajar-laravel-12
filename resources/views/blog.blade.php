@@ -12,7 +12,14 @@
     <div class="mt-5">
       <h1 class="text-center">Blog list</h1>
 
-      <div class="table-responsive">
+      <div class="table-responsive mt-5">
+        <form method="GET">
+          <div class="input-group mb-3">
+            <input type="text" name="title" value="{{ $title }}" class="form-control" placeholder="Search Title" aria-label="Search Title" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+          </div>
+        </form>
+
         <table class="table table-striped table-hover">
           <thead>
             <th>#</th>
@@ -20,6 +27,12 @@
             <th>Action</th>
           </thead>
           <tbody class="table-group-divider">
+            @if($blogs->count() == 0)
+            <tr>
+              <td colspan="3" class="text-center">No Data Found with <strong>{{ $title }}</strong> keyword</td>
+            </tr>
+            @endif
+
             @foreach ($blogs as $blog)
             <tr>
               <td>{{ ($blogs->currentpage()-1) * $blogs->perpage() + $loop->index + 1}}</td>
