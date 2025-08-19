@@ -14,4 +14,17 @@ class BlogController extends Controller
 
         return view('blog', ['blogs' => $blogs, 'title' => $title]);
     }
+
+    function add()
+    {
+        return view('blog-add');
+    }
+
+    function create(Request $request)
+    {
+        DB::table('blogs')->insert([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+    }
 }

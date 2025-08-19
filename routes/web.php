@@ -9,3 +9,5 @@ Route::get('/', function () {
 });
 
 Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/blog/add', [BlogController::class, 'add']);
+Route::post('/blog/create', [BlogController::class, 'create']);
