@@ -8,6 +8,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/add', [BlogController::class, 'add']);
 Route::post('/blog/create', [BlogController::class, 'create']);

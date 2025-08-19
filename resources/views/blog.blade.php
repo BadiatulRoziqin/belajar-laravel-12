@@ -15,6 +15,10 @@
       <div class="table-responsive mt-5">
         <a href="{{ url('/blog/add') }}" class="btn btn-primary mb-3">Add New</a>
 
+        @if(Session::has('message'))
+        <p class="alert alert-success">{{ Session::get('message') }}</p>
+        @endif
+
         <form method="GET">
           <div class="input-group mb-3">
             <input type="text" name="title" value="{{ $title }}" class="form-control" placeholder="Search Title" aria-label="Search Title" aria-describedby="button-addon2">
