@@ -40,6 +40,9 @@ class BlogController extends Controller
     function show($id)
     {
         $blog = DB::table('blogs')->where('id', $id)->first();
+        if (!$blog) {
+            abort(404);
+        }
         return view('blog-detail', ['blog' => $blog]);
     }
 }
